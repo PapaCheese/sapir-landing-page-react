@@ -1,38 +1,210 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+main {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+main.rtl {
+  text-align: end;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+section {
+  transform-style: preserve-3d;
+  position: relative;
+  min-height: 60vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 32px 64px;
+}
+
+.no-parallax {
+  background-color: #111;
+  z-index: 999;
+}
+
+.no-parallax.smaller {
+  min-height: 10vh;
+}
+
+.brown {
+  background-color: #aa8b56;
+}
+
+.green {
+  background-color: #4e6c50;
+}
+
+.about-me-wrapper {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.services-wrapper {
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.services {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  padding: 32px;
+}
+
+.services::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.services .img-wrapper {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  transition: 200ms ease-out;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0);
+  min-width: 140px;
+}
+
+.services .img-wrapper:hover {
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.services .img-wrapper img {
+  height: 100%;
+}
+
+.services .img-wrapper .desc {
+  background-color: rgba(0, 0, 0, 0);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(255, 255, 255, 0);
+  transition: 200ms ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.services .desc:hover {
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+section h1 {
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.title-wrpper h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.title-wrpper {
+  text-align: center;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-wrpper .subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.title-wrpper a {
+  margin-top: 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 4px 8px;
+  background-color: #395144;
+  color: #c0e3cd;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.title-wrpper a:hover {
+  background-color: #c0e3cd;
+  color: #395144;
+}
+
+.parallax::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateZ(-1px) translateY(-100px) scale(3);
+  background-size: 100%;
+  z-index: -1;
+}
+
+.bg::after {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./assets/pic_1.jpg");
+  background-size: cover;
+}
+
+@media screen and (min-width: 768px) {
+  .title-wrpper .subtitle {
+    font-size: 2rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .title-wrpper a {
+    font-size: 2rem;
   }
+
+  .title-wrpper h1 {
+    font-size: 4rem;
+  }
+}
+
+.language-select {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  border-radius: 4px;
+  color: #563e0c;
+  background-color: #f0ebce;
+  width: 30px;
+  height: 25px;
+  overflow: hidden;
+}
+
+.language-select img {
+  top: -8px;
+  left: -4px;
+  position: absolute;
+}
+
+.divider {
+  height: 2px;
+  margin: 0 30%;
+  border-radius: 1px;
+  background-color: #ffffff49;
 }
